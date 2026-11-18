@@ -1,0 +1,13 @@
+{
+  "name": "ak-wedding-invitation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static wedding reception invitation for Ajay GR and Karthika A.",
+  "scripts": {
+    "start": "npx serve . -l 3000",
+    "start:open": "npx serve . -l 3000"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Wedding reception invitation for Roshan Rafeek and Hannath.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Roshan Rafeek &amp; Hannath">
+  <meta property="og:title" content="Roshan Rafeek &amp; Hannath | Wedding Invitation">
+  <meta property="og:description" content="Together with our families, we joyfully invite you to celebrate our wedding reception on 4 January 2027.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Roshan Rafeek &amp; Hannath | Wedding Invitation">
+  <meta name="twitter:description" content="Join us as we celebrate our wedding on 4 January 2027.">
+  <title>Roshan Rafeek & Hannath | Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;500;600;700&family=Italianno&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script defer src="js/particles.js"></script>
+  <script defer src="js/countdown.js"></script>
+  <script defer src="js/rsvp.js"></script>
+  <script defer src="js/animations.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <section class="cover-scene" data-cover-scene aria-label="Wedding invitation cover">
+    <button class="cover-card" type="button" data-cover-card aria-label="Tap to open the wedding invitation">
+      <svg class="envelope-art" viewBox="0 0 1086 1448" role="img" aria-label="Dark navy floral envelope with a gold RH wax seal">
+        <image href="assets/navy-invitation-cover.png" width="1086" height="1448"/>
+        <ellipse cx="543" cy="993" rx="97" ry="96" fill="#282318"/>
+        <text x="543" y="1021" text-anchor="middle" fill="#d9b776" font-family="Georgia, serif" font-size="88">RH</text>
+      </svg>
+      <span class="cover-glow" aria-hidden="true"></span>
+      <span class="tap-hint" data-tap-hint>
+        <span class="tap-icon" aria-hidden="true"></span>
+        <strong>Tap to open</strong>
+        <small>Roshan Rafeek &amp; Hannath</small>
+      </span>
+    </button>
+  </section>
+
+  <div class="opening-stage" data-opening-stage aria-hidden="true">
+    <div class="gold-light"></div>
+    <div class="fold-panel fold-panel--left"></div>
+    <div class="fold-panel fold-panel--right"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Roshan and Hannath home"><img src="assets/rh-monogram.svg" alt=""></a>
+    <nav class="nav-links" aria-label="Invitation sections">
+      <a href="#home">Home</a>
+      <a href="#story">Our Families</a>
+      <a href="#events">Events</a>
+      <a href="#venue">Venue</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+    <button class="music-toggle" type="button" data-music-toggle aria-label="Play wedding music" aria-pressed="false" title="Play Married Life">
+      <span aria-hidden="true">Play</span>
+    </button>
+  </header>
+  <audio data-audio-wax preload="auto" src="assets/audio/wax.mp3"></audio>
+  <audio data-audio-paper preload="auto" src="assets/audio/paper.mp3"></audio>
+  <audio data-wedding-music preload="auto" loop src="assets/audio/married-life.mpeg" type="audio/mpeg"></audio>
+
+  <main id="main" class="paper-world" data-paper-world>
+    <div class="paper-grain" aria-hidden="true"></div>
+    <div class="petal-field" aria-hidden="true" data-petal-field></div>
+
+    <section class="hero invite-section" id="home" aria-labelledby="couple-heading">
+      <div class="botanical botanical--left" aria-hidden="true"></div>
+      <div class="botanical botanical--right" aria-hidden="true"></div>
+      <div class="hero-logo-frame"><img src="assets/rh-monogram.svg" alt="Gold RH wedding monogram"></div>
+      <p class="section-kicker">Together with our families</p>
+      <h1 id="couple-heading">
+        <span>Roshan Rafeek</span>
+        <em>&</em>
+        <span>Hannath</span>
+      </h1>
+      <p class="hero-note">We joyfully invite you to celebrate our wedding and bless us as we begin our life together.</p>
+      <time datetime="2027-01-04T12:00:00+05:30">4 January 2027</time>
+      <a class="primary-button ripple" href="#events">View Events</a>
+    </section>
+
+    <section class="invite-section compact-section story-section" id="story" aria-labelledby="story-heading">
+      <p class="section-kicker">Bride and Groom</p>
+      <h2 id="story-heading">Our Families</h2>
+      <div class="story-card">
+        <h3>Roshan Rafeek</h3><p>Son of Rafeek K and Nadeera Rafeek<br>Kombathayil (H), Choolpuram,<br>Guruvayur, Thrissur</p>
+        <h3>Hannath</h3><p>Daughter of Mr. Abdul Razak and Mrs. Rahmath Abdul Razak<br>Kolothumparambil (H),<br>Chentrappinni, Thrissur</p>
+      </div>
+    </section>
+
+    <section class="invite-section compact-section" aria-labelledby="countdown-heading">
+      <h2 id="countdown-heading">Countdown to our Wedding</h2>
+      <div class="countdown" data-countdown aria-live="polite">
+        <div class="countdown-card"><strong data-days>00</strong><span>Days</span></div>
+        <div class="countdown-card"><strong data-hours>00</strong><span>Hours</span></div>
+        <div class="countdown-card"><strong data-minutes>00</strong><span>Minutes</span></div>
+        <div class="countdown-card"><strong data-seconds>00</strong><span>Seconds</span></div>
+      </div>
+      <a class="calendar-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Reception%20of%20Roshan%20Rafeek%20and%20Hannath&amp;dates=20270104T063000Z/20270104T063000Z&amp;details=Join%20us%20for%20our%20wedding%20reception&amp;location=Namas%20International%20Convention%20Center%2C%20Thozhuyur" target="_blank" rel="noopener">Add to Calendar <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="invite-section compact-section" id="events" aria-labelledby="events-heading">
+      <h2 id="events-heading">Events</h2>
+      <div class="event-grid">
+        
+
+        <article class="event-card event-card--reception event-card--featured">
+          <span class="event-number" aria-hidden="true">01</span>
+          <div class="event-card__content">
+            <p class="timeline-label">Join us for lunch</p>
+            <h3>Wedding Lunch</h3>
+            <div class="event-meta">
+              <p><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"/></svg><time datetime="2027-01-04T12:00:00+05:30">4 January 2027</time></p>
+              <p class="event-time"><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Lunch at 12 noon</p>
+              <p class="event-place"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21s7-5.2 7-12a7 7 0 1 0-14 0c0 6.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.2"/></svg>Namas International Convention Center, Thozhuyur</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="invite-section compact-section" id="venue" aria-labelledby="venue-heading">
+      <h2 id="venue-heading">Wedding Venue</h2>
+      <div class="venue-grid">
+        <article class="venue-card venue-card--reception">
+          <figure class="venue-visual">
+            <img src="assets/namas-exterior.jpg" alt="Exterior and entrance of Namas International Convention Center" loading="lazy">
+            <figcaption>Wedding Lunch</figcaption>
+          </figure>
+          <div class="venue-content">
+            <p class="venue-eyebrow">4 January &middot; 12 noon</p>
+            <h3>Namas International Convention Center</h3>
+            <p>Thozhuyur</p>
+            <a class="secondary-button ripple" href="https://www.google.com/maps/dir/?api=1&amp;destination=Namas%20International%20Convention%20Center%2C%20Thozhuyur" target="_blank" rel="noopener">View Directions <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="map-frame">
+            <iframe src="https://www.google.com/maps?q=Namas%20International%20Convention%20Center%2C%20Thozhuyur&amp;output=embed" title="Map showing Namas International Convention Center, Thozhuyur" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="invite-section compact-section rsvp-section" id="rsvp" aria-labelledby="rsvp-heading">
+      <h2 id="rsvp-heading">Will You Celebrate With Us?</h2>
+      <div class="rsvp-shell" data-rsvp-shell>
+        <form class="rsvp-card rsvp-card--front" data-rsvp-form novalidate>
+          <h3>Our day would feel more complete with you there</h3>
+
+          <label class="field">
+            <input name="fullName" type="text" autocomplete="name" required placeholder=" ">
+            <span>Full Name</span>
+          </label>
+          <label class="field">
+            <input name="phone" type="tel" autocomplete="tel" required placeholder=" ">
+            <span>Phone Number</span>
+          </label>
+          <fieldset class="attendance">
+            <legend>Will you be joining us?</legend>
+            <label><input type="radio" name="willAttend" value="Yes" checked> <span>Joyfully, yes</span></label>
+            <label><input type="radio" name="willAttend" value="Maybe"> <span>Maybe—I’ll confirm soon</span></label>
+            <label><input type="radio" name="willAttend" value="No"> <span>With love, I can’t attend</span></label>
+          </fieldset>
+
+          <label class="field">
+            <input name="guests" type="number" min="1" max="12" value="1" required placeholder=" ">
+            <span>Number of Guests</span>
+          </label>
+
+          <label class="field field--textarea">
+            <textarea name="message" rows="4" placeholder=" "></textarea>
+            <span>Wishes for the Couple</span>
+          </label>
+
+          <p class="form-error" data-form-error role="alert"></p>
+          <button class="primary-button ripple" type="submit" data-rsvp-submit>
+            <span data-submit-label>Submit RSVP</span>
+          </button>
+        </form>
+
+        <div class="rsvp-card rsvp-card--back" aria-live="polite">
+          <h3>Thank You</h3>
+          <p>Your presence means more to us than words can say. We cannot wait to celebrate together.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="invite-section final-section" aria-labelledby="final-heading">
+      <h2 id="final-heading">With All Our Hearts</h2>
+      <p>Thank you for being part of our lives, our memories, and now, our forever.<br>With love, Roshan &amp; Hannath</p>
+    </section>
+  </main>
+</body>
+</html>
