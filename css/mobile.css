@@ -61,3 +61,47 @@ main .venue-visual img { width: 100%; height: 100%; object-fit: cover; }
   }
   .tap-hint { bottom: max(1.5rem, env(safe-area-inset-bottom)); }
 }
+
+.portrait-frame {
+  position: relative;
+  width: min(calc(100% - 2.5rem), 26rem);
+  box-sizing: border-box;
+  margin: 2rem auto;
+  padding: 4px;
+  border: 1px solid #c8b48b;
+  border-radius: 26% 26% 12% 12% / 20% 20% 12% 12%;
+  background: #faf8f2;
+  box-shadow: 0 3px 12px #493a2310;
+}
+
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid #e2d8c2;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.couple-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+.venue-card.venue-card--reception { display: flex; flex-direction: column; }
+#particle-canvas i {
+  position: absolute;
+  width: 5px;
+  height: 7px;
+  background: radial-gradient(ellipse, white 15%, #adbdce 65%, #8798aa);
+  clip-path: polygon(50% 0, 60% 39%, 100% 50%, 60% 61%, 50% 100%, 40% 61%, 0 50%, 40% 39%);
+  animation: diamond-twinkle 5s ease-in-out infinite;
+}
+@keyframes diamond-twinkle {
+  0%, 44%, 76%, 100% { opacity: 0; }
+  60% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #particle-canvas { display: none; }
+}

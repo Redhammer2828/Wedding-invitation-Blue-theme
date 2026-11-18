@@ -112,23 +112,6 @@
     audio.addEventListener("ended", () => updateButton(false));
   }
 
-  function setupPetals() {
-    const field = document.querySelector("[data-petal-field]");
-    if (!field) return;
-
-    const count = window.innerWidth > 760 ? 24 : 14;
-    for (let index = 0; index < count; index += 1) {
-      const petal = document.createElement("span");
-      petal.className = "petal";
-      petal.style.left = `${Math.random() * 100}%`;
-      petal.style.setProperty("--duration", `${16 + Math.random() * 18}s`);
-      petal.style.setProperty("--delay", `${Math.random() * -24}s`);
-      petal.style.setProperty("--sway", `${-80 + Math.random() * 160}px`);
-      petal.style.transform = `scale(${0.65 + Math.random() * 0.65}) rotate(${Math.random() * 180}deg)`;
-      field.appendChild(petal);
-    }
-  }
-
   function bindOpening() {
     const cover = document.querySelector("[data-cover-card]");
     if (!cover || !window.InvitationAnimations) return;
@@ -149,7 +132,6 @@
     setupLenis();
     setupRipples();
     setupMusic();
-    setupPetals();
     window.InvitationParticles?.init();
     window.InvitationCountdown?.init("2027-01-04T12:00:00+05:30");
     window.InvitationRSVP?.init();

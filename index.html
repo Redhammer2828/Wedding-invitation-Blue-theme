@@ -27,7 +27,7 @@
   <script defer src="js/app.js"></script>
 </head>
 <body>
-  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div id="particle-canvas" aria-hidden="true"></div>
 
   <section class="cover-scene" data-cover-scene aria-label="Wedding invitation cover">
     <button class="cover-card" type="button" data-cover-card aria-label="Tap to open the wedding invitation">
@@ -70,7 +70,6 @@
 
   <main id="main" class="paper-world" data-paper-world>
     <div class="paper-grain" aria-hidden="true"></div>
-    <div class="petal-field" aria-hidden="true" data-petal-field></div>
 
     <section class="hero invite-section" id="home" aria-labelledby="couple-heading">
       <div class="botanical botanical--left" aria-hidden="true"></div>
@@ -88,8 +87,10 @@
     </section>
 
     <section class="invite-section compact-section story-section" id="story" aria-labelledby="story-heading">
-      <p class="section-kicker">Bride and Groom</p>
-      <h2 id="story-heading">Our Families</h2>
+      <h2 id="story-heading">Bride &amp; Groom</h2>
+      <figure class="portrait-frame">
+      <img class="couple-portrait" src="assets/couple-portrait.jpg" alt="Watercolor portrait of Roshan and Hannath" loading="lazy">
+    </figure>
       <div class="story-card">
         <h3>Roshan Rafeek</h3><p>Son of Rafeek K and Nadeera Rafeek<br>Kombathayil (H), Choolpuram,<br>Guruvayur, Thrissur</p>
         <h3>Hannath</h3><p>Daughter of Mr. Abdul Razak and Mrs. Rahmath Abdul Razak<br>Kolothumparambil (H),<br>Chentrappinni, Thrissur</p>
@@ -131,10 +132,6 @@
       <h2 id="venue-heading">Wedding Venue</h2>
       <div class="venue-grid">
         <article class="venue-card venue-card--reception">
-          <figure class="venue-visual">
-            <img src="assets/namas-exterior.jpg" alt="Exterior and entrance of Namas International Convention Center" loading="lazy">
-            <figcaption>Wedding Lunch</figcaption>
-          </figure>
           <div class="venue-content">
             <p class="venue-eyebrow">4 January &middot; 12 noon</p>
             <h3>Namas International Convention Center</h3>
