@@ -123,11 +123,27 @@
       <h2 id="venue-heading">Wedding Venue</h2>
       <div class="venue-grid">
         <article class="venue-card venue-card--reception">
+          <div class="venue-postcard">
+          <div class="postcard-art">
+            <svg viewBox="0 0 600 390" role="img" aria-label="Watercolor-style view of Namas International Convention Center">
+              <defs>
+                <filter id="postcard-wash" x="0" y="0" width="100%" height="100%">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation=".9" result="wash"/>
+                  <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" result="paper"/>
+                  <feDisplacementMap in="wash" in2="paper" scale="4"/>
+                  <feColorMatrix type="saturate" values=".74"/>
+                </filter>
+              </defs>
+              <image href="assets/namas-exterior.jpg" width="600" height="390" preserveAspectRatio="xMidYMid slice" filter="url(#postcard-wash)"/>
+            </svg>
+          </div>
           <div class="venue-content">
-            <p class="venue-eyebrow">4 January &middot; 12 noon</p>
+            <img class="postcard-stamp" src="assets/rh-monogram.svg" alt="">
+            <time class="postcard-date" datetime="2027-01-04T12:00:00+05:30">4 January 2027 &middot; 12 noon</time>
             <h3>Namas International Convention Center</h3>
             <p>Thozhuyur</p>
-            <a class="secondary-button ripple" href="https://www.google.com/maps/dir/?api=1&amp;destination=Namas%20International%20Convention%20Center%2C%20Thozhuyur" target="_blank" rel="noopener">View Directions <span aria-hidden="true">↗</span></a>
+            <a class="secondary-button ripple" href="https://www.google.com/maps/dir/?api=1&amp;destination=Namas%20International%20Convention%20Center%2C%20Thozhuyur" target="_blank" rel="noopener">Get directions <span aria-hidden="true">↗</span></a>
+          </div>
           </div>
 
           <div class="map-frame">
@@ -141,15 +157,9 @@
       <h2 id="rsvp-heading">Will You Celebrate With Us?</h2>
       <div class="rsvp-shell" data-rsvp-shell>
         <form class="rsvp-card rsvp-card--front" data-rsvp-form novalidate>
-          <h3>Our day would feel more complete with you there</h3>
-
           <label class="field">
-            <input name="fullName" type="text" autocomplete="name" required placeholder=" ">
+            <input maxlength="120" name="fullName" type="text" autocomplete="name" required placeholder=" ">
             <span>Full Name</span>
-          </label>
-          <label class="field">
-            <input name="phone" type="tel" autocomplete="tel" required placeholder=" ">
-            <span>Phone Number</span>
           </label>
           <fieldset class="attendance">
             <legend>Will you be joining us?</legend>
@@ -158,16 +168,13 @@
             <label><input type="radio" name="willAttend" value="No"> <span>With love, I can’t attend</span></label>
           </fieldset>
 
-          <label class="field">
-            <input name="guests" type="number" min="1" max="12" value="1" required placeholder=" ">
-            <span>Number of Guests</span>
-          </label>
 
           <label class="field field--textarea">
-            <textarea name="message" rows="4" placeholder=" "></textarea>
+            <textarea name="message" rows="4" placeholder=" " maxlength="1000" aria-describedby="wish-visibility"></textarea>
             <span>Wishes for the Couple</span>
           </label>
 
+          <small id="wish-visibility">If you leave a wish, your name and message will appear on the invitation.</small>
           <p class="form-error" data-form-error role="alert"></p>
           <button class="primary-button ripple" type="submit" data-rsvp-submit>
             <span data-submit-label>Submit RSVP</span>
@@ -176,15 +183,30 @@
 
         <div class="rsvp-card rsvp-card--back" aria-live="polite">
           <h3>Thank You</h3>
+          <p data-wish-status></p>
           <p>Your presence means more to us than words can say. We cannot wait to celebrate together.</p>
         </div>
       </div>
     </section>
 
-    <section class="invite-section final-section" aria-labelledby="final-heading">
-      <h2 id="final-heading">With All Our Hearts</h2>
-      <p>Thank you for being part of our lives, our memories, and now, our forever.<br>With love, Roshan &amp; Hannath</p>
+    <section class="invite-section final-section guest-wishes" aria-labelledby="wishes-heading" data-guest-wishes>
+      <h2 id="wishes-heading">Wishes for the Couple</h2>
+      <p data-wishes-empty>Leave a wish for us in your RSVP.</p>
+      <ul data-wishes-list aria-live="polite"></ul>
     </section>
+
+    <footer class="invite-section final-section invitation-footer" aria-labelledby="final-heading">
+      <div class="footer-note">
+      <h2 id="final-heading">With All Our Hearts</h2>
+      <p>Thank you for being part of our lives, our memories, and now, our forever.</p>
+      <p class="footer-signature">With love, Roshan &amp; Hannath</p>
+      <svg class="footer-sprig" viewBox="0 0 160 44" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path pathLength="1" d="M15 33Q50 37 83 25T132 13"/>
+        <path pathLength="1" d="M43 33Q35 28 32 20Q44 21 48 33 M61 31Q68 35 78 32Q73 27 67 29 M82 25Q75 21 72 12Q83 15 87 23 M101 19Q110 22 118 17Q111 14 106 17"/>
+        <path pathLength="1" d="M132 13C120 12 123 3 129 6Q132 8 133 11C130 0 141 1 140 7Q139 10 136 12C147 6 150 15 143 17Q139 17 136 15C142 23 133 27 131 20Q130 17 132 13Z"/>
+      </svg>
+      </div>
+    </footer>
   </main>
 </body>
 </html>

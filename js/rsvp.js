@@ -2,9 +2,7 @@ window.InvitationRSVP = (() => {
   const GOOGLE_FORM_ENDPOINT = "https://docs.google.com/forms/d/e/1FAIpQLScS-68fRrUe7phlWwHMgIboSx2C1mMo__VxbMs6erQNoLZR0g/formResponse";
   const GOOGLE_FORM_FIELDS = {
     fullName: "entry.1493318309",
-    phone: "entry.614911774",
     willAttend: "entry.1814049251",
-    guests: "entry.164156719",
     message: "entry.1234864912"
   };
   const ATTENDANCE_CHOICES = {
@@ -12,13 +10,48 @@ window.InvitationRSVP = (() => {
     Maybe: "May be-ill confirm soon",
     No: "with love,icant attend"
   };
+  const WISHES_URL = "https://kpggcpnrblcgqrkzirzb.supabase.co/rest/v1/wedding_wishes";
+  const WISHES_HEADERS = { apikey: "sb_publishable_oJ3YHwFNT8FxYWuHaaI2Nw_aSDBGk4r" };
+
+  async function loadWishes() {
+    const section = document.querySelector("[data-guest-wishes]");
+    const list = section?.querySelector("[data-wishes-list]");
+    if (!list) return;
+
+    const response = await fetch(WISHES_URL + "?select=name,message&order=id.desc&limit=100", {
+      headers: WISHES_HEADERS,
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000)
+    });
+    if (!response.ok) throw new Error("Could not load shared wishes.");
+
+    const wishes = await response.json();
+    list.replaceChildren(...wishes.map((wish) => {
+      const item = document.createElement("li");
+      const message = document.createElement("p");
+      const name = document.createElement("strong");
+      message.textContent = wish.message;
+      name.textContent = wish.name;
+      item.append(message, name);
+      return item;
+    }));
+    section.querySelector("[data-wishes-empty]").hidden = wishes.length > 0;
+  }
+
+  async function saveWish(payload) {
+    const response = await fetch(WISHES_URL, {
+      method: "POST",
+      headers: { ...WISHES_HEADERS, "Content-Type": "application/json" },
+      body: JSON.stringify({ name: payload.fullName.slice(0, 120), message: payload.message }),
+      signal: AbortSignal.timeout(8000)
+    });
+    if (!response.ok) throw new Error("Could not post the shared wish.");
+  }
 
   function formToJSON(form) {
     const data = new FormData(form);
     return {
       fullName: String(data.get("fullName") || "").trim(),
-      phone: String(data.get("phone") || "").trim(),
-      guests: Number(data.get("guests") || 0),
       willAttend: String(data.get("willAttend") || "Yes"),
       message: String(data.get("message") || "").trim(),
       submittedAt: new Date().toISOString()
@@ -27,8 +60,6 @@ window.InvitationRSVP = (() => {
 
   function validate(payload) {
     if (!payload.fullName) return "Please enter your full name.";
-    if (!payload.phone || payload.phone.replace(/\D/g, "").length < 7) return "Please enter a valid phone number.";
-    if (!payload.guests || payload.guests < 1) return "Please enter the number of guests.";
     return "";
   }
 
@@ -39,6 +70,8 @@ window.InvitationRSVP = (() => {
     const submitButton = document.querySelector("[data-rsvp-submit]");
     const submitLabel = document.querySelector("[data-submit-label]");
     if (!form || !shell) return;
+    const wishStatus = shell.querySelector("[data-wish-status]");
+    loadWishes().catch(console.warn);
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
@@ -56,9 +89,7 @@ window.InvitationRSVP = (() => {
       try {
         const formData = new URLSearchParams();
         formData.set(GOOGLE_FORM_FIELDS.fullName, payload.fullName);
-        formData.set(GOOGLE_FORM_FIELDS.phone, payload.phone);
         formData.set(GOOGLE_FORM_FIELDS.willAttend, ATTENDANCE_CHOICES[payload.willAttend] || ATTENDANCE_CHOICES.Yes);
-        formData.set(GOOGLE_FORM_FIELDS.guests, String(payload.guests));
         formData.set(GOOGLE_FORM_FIELDS.message, payload.message);
 
         await fetch(GOOGLE_FORM_ENDPOINT, {
@@ -68,6 +99,15 @@ window.InvitationRSVP = (() => {
           body: formData.toString()
         });
 
+        if (payload.message) {
+          try {
+            await saveWish(payload);
+            loadWishes().catch(console.warn);
+          } catch (wishError) {
+            console.warn(wishError);
+            if (wishStatus) wishStatus.textContent = "Your wish was included in your RSVP. It could not be posted to the shared guestbook.";
+          }
+        }
         shell.classList.add("is-flipped");
         form.reset();
       } catch (submissionError) {

@@ -137,3 +137,88 @@ main .venue-visual img { width: 100%; height: 100%; object-fit: cover; }
 }
 .reception-place a span { display: block; color: #cbd6df; }
 .reception-place a:hover, .reception-place a:focus-visible { text-decoration: underline; }
+
+main .guest-wishes {
+  background: #fbf7ef;
+  color: #19384b;
+  padding: clamp(32px,6vw,72px) clamp(18px,5vw,56px);
+  box-shadow: inset 0 0 0 6px #fbf7ef, inset 0 0 0 7px #d7c8ab;
+}
+main .guest-wishes ul { max-width: 580px; margin: 20px auto 0; }
+main .guest-wishes li { padding: 22px 12px; border-color: #d8c8aa; }
+main .guest-wishes li::before { content: "“"; display: block; color: #987942; font: 48px/.8 Georgia,serif; }
+main .guest-wishes li p { font-size: clamp(20px,3vw,26px); line-height: 1.4; font-style: italic; }
+main .guest-wishes li strong { color: #365263; letter-spacing: .06em; }
+main .rsvp-section .rsvp-card { border: 1px solid #c9b993; border-radius: 8px; padding: clamp(20px,4vw,42px); }
+main .rsvp-card h3 { font: 400 40px/1.1 Italianno,cursive; }
+main .invitation-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(32px, 6vw, 70px) clamp(22px, 5vw, 55px);
+  background: linear-gradient(110deg, rgba(14,34,50,.54), rgba(12,32,49,.9)), url("../assets/navy-botanical-background.png") center / cover;
+  border: 1px solid #af9465;
+  box-shadow: inset 0 0 0 6px #162e40, inset 0 0 0 7px #766b51;
+  text-align: center;
+}
+main .invitation-footer h2 { color: #fff6e6; margin: 0 0 .5em; text-wrap: balance; }
+main .invitation-footer p { max-width: 36ch; margin: auto; color: #f5eee4; }
+main .invitation-footer .footer-signature { margin-top: .55em; color: #f1d59d; font: 400 clamp(26px,4vw,36px)/1.2 Italianno,cursive; }
+.footer-sprig { display: block; width: 145px; margin: .55rem auto 0; color: #d8b77a; }
+.venue-postcard { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px; padding: 14px; background: #faf4e7; color: #253c4b; }
+.postcard-art { display: grid; align-items: center; }
+.postcard-art svg { width: 100%; height: auto; background: #fff6e5; border: 5px solid #fffaf1; box-shadow: 0 2px 6px #45372126; transform: rotate(-1deg); }
+.venue-postcard .venue-content { display: grid; align-content: center; justify-items: start; text-align: left; gap: 8px; padding: 8px 14px; border-left: 1px solid #cabb9b; }
+.venue-postcard .postcard-stamp { width: 40px; height: 46px; justify-self: end; border: 2px dotted #ae9974; padding: 4px; transform: rotate(5deg); }
+.postcard-date { font-size: .9rem; color: #695636; }
+.venue-postcard .venue-content h3, .venue-postcard .venue-content p { margin: 0; color: #233f51; }
+.venue-postcard .venue-content p { width: 100%; border-bottom: 1px solid #cabb9b; padding-bottom: 6px; }
+@media (max-width: 650px) {
+  .venue-postcard { grid-template-columns: 1fr; gap: 8px; }
+  .venue-postcard .venue-content { border-left: 0; border-top: 1px solid #cabb9b; position: relative; padding-top: 16px; }
+  .venue-postcard .postcard-stamp { position: absolute; right: 4px; top: 9px; width: 32px; height: 36px; }
+  .venue-postcard .venue-content h3 { padding-right: 30px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sprig-ready .footer-sprig path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .sprig-ready.section-enter .footer-sprig path { animation: sprig-draw 1.3s ease-out forwards; }
+  .sprig-ready.section-enter .footer-sprig path:nth-child(2) { animation-delay: .55s; }
+  .sprig-ready.section-enter .footer-sprig path:last-child { animation-delay: 1.1s; }
+  @keyframes sprig-draw { to { stroke-dashoffset: 0; } }
+}
+main .rsvp-shell, main .rsvp-section .rsvp-card { min-height: 0; }
+main .rsvp-section .rsvp-card--front { position: relative; inset: auto; align-content: start; }
+main .rsvp-section .rsvp-card--back { inset: 0; }
+main .attendance { display: flex; flex-wrap: wrap; gap: 8px; }
+main .attendance label { flex: 1 1 110px; justify-content: center; padding: 10px; margin: 0; }
+main .attendance label:has(:checked) { background: #1d4056; }
+main .attendance label:has(:checked) span { color: white; }
+#wish-visibility { display: block; color: #485d69; line-height: 1.4; }
+.form-error:empty { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  body:not(.is-locked) #particle-canvas { display: block; pointer-events: none; }
+  .falling-flower {
+    position: absolute;
+    top: -20px;
+    width: 18px;
+    height: 18px;
+    --petal: #e8b8bd;
+    background:
+      radial-gradient(circle at center, #b88640 0 13%, transparent 17%),
+      radial-gradient(ellipse at 50% 23%, var(--petal) 0 19%, transparent 23%),
+      radial-gradient(circle at 77% 43%, var(--petal) 0 19%, transparent 23%),
+      radial-gradient(circle at 67% 76%, var(--petal) 0 19%, transparent 23%),
+      radial-gradient(circle at 33% 76%, var(--petal) 0 19%, transparent 23%),
+      radial-gradient(circle at 23% 43%, var(--petal) 0 19%, transparent 23%);
+    animation: flower-fall linear infinite;
+  }
+  .falling-flower:nth-child(even) { --petal: #f2dfbc; }
+  @keyframes flower-fall {
+    0% { transform: translateY(-20px); opacity: 0; }
+    12%,85% { opacity: .65; }
+    48% { transform: translate(30px,49vh) rotate(155deg) rotateY(55deg); }
+    100% { transform: translate(-12px,105vh) rotate(310deg); opacity: 0; }
+  }
+  .section-enter > h2 { animation: heading-arrival .9s ease-out both; }
+  @keyframes heading-arrival { from { opacity: .2; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+}

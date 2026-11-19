@@ -78,6 +78,22 @@ window.InvitationAnimations = (() => {
   }
 
   function setupScroll() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(({ target, isIntersecting }) => {
+          if (!isIntersecting) return;
+          target.classList.add("section-enter");
+          observer.unobserve(target);
+        });
+      });
+      document.querySelectorAll("main section").forEach(section => observer.observe(section));
+      const footer = document.querySelector(".invitation-footer");
+      if (footer) {
+        footer.classList.add("sprig-ready");
+        observer.observe(footer);
+      }
+    }
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
 
